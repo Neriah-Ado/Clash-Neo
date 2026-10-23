@@ -18,6 +18,8 @@ function relaxForDev(html: string, ctx: { server?: ViteDevServer }) {
 }
 
 export default defineConfig({
+  // relative base: required so file:// Electron loads assets correctly
+  base: "./",
   plugins: [react(), tailwindcss(), { transformIndexHtml: relaxForDev }],
   server: { port: 5180 },
 });
