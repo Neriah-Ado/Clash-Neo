@@ -2,7 +2,7 @@
   "name": "clash-neo",
   "productName": "Clash-Neo",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Liquid-glass style Clash/mihomo dashboard — security-hardened Electron shell",
   "license": "GPL-3.0-only",
   "author": "Neriah-Ado",

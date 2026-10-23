@@ -227,7 +227,7 @@ export async function fetchStatus(): Promise<ClashStatus> {
     mode: "rule",
     tunEnabled: false,
     systemProxy: true,
-    version: "1.0.0-neo",
+    version: "1.1.0-neo",
     coreVersion: "mihomo 1.19.13",
   };
 }
@@ -375,6 +375,7 @@ export async function importProfile(input: ImportInput): Promise<Profile> {
       Math.round(rnd(8, 24)),
     );
     profiles = [...profiles, profile];
+    notifyProfileActivated();
     return profile;
   }
 
@@ -389,11 +390,13 @@ export async function importProfile(input: ImportInput): Promise<Profile> {
     }
     const profile = makeProfile(`剪贴板导入 · ${lines.length} 节点`, "links", undefined, lines.length);
     profiles = [...profiles, profile];
+    notifyProfileActivated();
     return profile;
   }
 
   const profile = makeProfile(`GlassNet 备用线路 ${profiles.length + 1}`, "demo", undefined, Math.round(rnd(10, 20)));
   profiles = [...profiles, profile];
+  notifyProfileActivated();
   return profile;
 }
 

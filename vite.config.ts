@@ -12,7 +12,7 @@ function relaxForDev(html: string, ctx: { server?: ViteDevServer }) {
   return html
     .replace("script-src 'self'", "script-src 'self' 'unsafe-inline'")
     .replace(
-      "connect-src 'self'",
+      "connect-src 'none'",
       "connect-src 'self' ws://127.0.0.1:5180 ws://localhost:5180",
     );
 }

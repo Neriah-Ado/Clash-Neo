@@ -53,13 +53,21 @@ npm run electron:build # 打包 Clash-Neo-1.0.0.exe（release/）
 
 结论：V1.0.0 以 mihomo 为目标内核不变；服务层为核心无关设计（`invoke()` 形状），更换内核只需替换适配层。
 
-## 安全加固清单（V1.0.0）
+## 多订阅快速切换（V1.1.0）
+
+- 侧栏常驻**当前订阅切换器**：任意页面一键展开全部订阅（名称 + 节点数 + 当前标记），单击即换
+- 切换即时生效：代理组、延迟监控、连接链路全部随新订阅重建，toast 明确反馈
+- 订阅页保留完整管理（导入/更新/删除/启用），侧栏是高频路径
+
+## 安全加固清单（V1.0.0 / V1.1.0 强化）
 
 - **CSP**：生产 HTML 携带严格 Content-Security-Policy（`script-src 'self'`、`object-src 'none'`、`base-uri 'none'`、`form-action 'none'`、`referrer: no-referrer`），杜绝注入脚本与远程代码；dev 由 vite 钩子按需放宽（HMR）
 - **Electron 壳加固**：`contextIsolation + sandbox` 开启、`nodeIntegration` 关闭、`devTools` 关闭；禁止一切页内导航与 `window.open`，外链一律移交系统浏览器
 - **供应链**：`npm audit` 0 漏洞；无 postinstall 依赖钩子（esbuild/electron 安装脚本经 allowScripts 显式批准）
 - **输入面**：订阅 URL 解析基于 `new URL()` 校验协议白名单；分享链接按 scheme 白名单过滤；React 默认转义，无 `dangerouslySetInnerHTML`
-- **数据面**：演示项目零网络请求（CSP connect-src 'self' 强制）；接真实后端时建议沿用 Tauri/Electron 侧代理转发，避免面板直连任意订阅源
+- **数据面**：演示项目零网络请求；V1.1.0 起双重强制——CSP `connect-src 'none'` + Electron 网络断路开关（渲染层只允许 `file://`，其余请求一律取消），订阅拉取的职责永远属于核心服务而非面板
+- **权限面**：拒绝全部 Electron 权限请求（摄像头/麦克风/通知/定位…）；应用菜单移除、单实例锁、`webviewTag`/`experimentalFeatures`/混合内容显式关闭
+- **接真实后端时**：建议沿用 Tauri/Electron 侧代理转发订阅请求，避免面板直连任意订阅源
 
 ## 主题系统（四套，默认黑曜）
 

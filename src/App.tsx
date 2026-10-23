@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { HomeView } from "./views/home";
 import { ProfilesView } from "./views/profiles";
+import { ProfileSwitcher } from "./components/profile-switcher";
 import { loadProfile } from "./lib/mock";
 import { ProxiesView } from "./views/proxies";
 import { ConnectionsView } from "./views/connections";
@@ -101,6 +102,8 @@ export function App() {
             <div className="text-[11px] opacity-50 tracking-widest">LIQUID GLASS</div>
           </div>
         </div>
+
+        <ProfileSwitcher />
 
         <nav className="mt-4 space-y-1.5">
           {nav.map(({ id, label, icon: Icon }) => (
