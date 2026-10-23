@@ -1,0 +1,62 @@
+{
+  "name": "clash-neo",
+  "productName": "Clash-Neo",
+  "private": false,
+  "version": "1.0.0",
+  "description": "Liquid-glass style Clash/mihomo dashboard — security-hardened Electron shell",
+  "license": "GPL-3.0-only",
+  "author": "Neriah-Ado",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "electron:dev": "vite build && electron .",
+    "electron:build": "tsc --noEmit && vite build && electron-builder --win"
+  },
+  "dependencies": {
+    "lucide-react": "^0.474.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "electron": "^37.0.0",
+    "electron-builder": "^25.1.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "~5.8.0",
+    "vite": "^6.3.0"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "electron@37.10.3": true,
+    "electron-builder@25.1.8": true
+  },
+  "build": {
+    "appId": "io.github.neriah-ado.clash-neo",
+    "productName": "Clash-Neo",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**",
+      "electron/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Clash-Neo-${version}.${ext}"
+    }
+  }
+}

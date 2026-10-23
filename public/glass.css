@@ -1,0 +1,25 @@
+/*
+ * Glass material rules that must NOT pass through the CSS optimizer.
+ * Lightning CSS downlevels unprefixed backdrop-filter to
+ * -webkit-backdrop-filter (removed in modern Chromium) and drops
+ * `backdrop-filter: url(#filter) blur()` composite values entirely.
+ * Served as a public asset so the browser parses it verbatim.
+ */
+
+.glass {
+  background: rgb(var(--glass-tint) / var(--glass-tint-a));
+  -webkit-backdrop-filter: blur(var(--blur-radius)) saturate(1.6);
+  backdrop-filter: blur(var(--blur-radius)) saturate(1.6);
+}
+
+/* Refraction pane: SVG displacement bends the backdrop at the edges.
+ * Chromium only; other engines fall back to the .glass blur above. */
+.glass-refract {
+  backdrop-filter: url(#liquid-refraction) blur(var(--blur-radius)) saturate(1.6);
+}
+
+html.dark .glass {
+  background: rgb(var(--glass-tint) / var(--glass-tint-a));
+  -webkit-backdrop-filter: blur(var(--blur-radius)) saturate(1.6);
+  backdrop-filter: blur(var(--blur-radius)) saturate(1.6);
+}
