@@ -227,7 +227,7 @@ export async function fetchStatus(): Promise<ClashStatus> {
     mode: "rule",
     tunEnabled: false,
     systemProxy: true,
-    version: "1.1.0-neo",
+    version: "1.2.0-neo",
     coreVersion: "mihomo 1.19.13",
   };
 }

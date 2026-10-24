@@ -2,7 +2,7 @@
   "name": "clash-neo",
   "productName": "Clash-Neo",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Liquid-glass style Clash/mihomo dashboard — security-hardened Electron shell",
   "license": "GPL-3.0-only",
   "author": "Neriah-Ado",
@@ -50,13 +50,28 @@
     "win": {
       "target": [
         {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32",
+            "arm64"
+          ]
+        },
+        {
           "target": "portable",
           "arch": [
             "x64"
           ]
         }
-      ],
-      "artifactName": "Clash-Neo-${version}.${ext}"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "artifactName": "Clash-Neo-Setup-${version}-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Clash-Neo-Portable-${version}-${arch}.${ext}"
     }
   }
 }

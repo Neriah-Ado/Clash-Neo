@@ -53,6 +53,17 @@ npm run electron:build # 打包 Clash-Neo-1.0.0.exe（release/）
 
 结论：V1.0.0 以 mihomo 为目标内核不变；服务层为核心无关设计（`invoke()` 形状），更换内核只需替换适配层。
 
+## 发布产物（V1.2.0 起）
+
+| 文件 | 架构 | 说明 |
+| --- | --- | --- |
+| `Clash-Neo-Setup-1.2.0-x64.exe` | x64 | NSIS 安装包（主流 64 位 Windows） |
+| `Clash-Neo-Setup-1.2.0-ia32.exe` | x86 32 位 | 老旧 32 位系统 |
+| `Clash-Neo-Setup-1.2.0-arm64.exe` | ARM64 | Surface Pro X / 骁龙本等 |
+| `Clash-Neo-Portable-1.2.0-x64.exe` | x64 | 免安装便携版 |
+
+全部经 GitHub Release 分发；exe 未做代码签名，SmartScreen 首次运行会提示。
+
 ## 多订阅快速切换（V1.1.0）
 
 - 侧栏常驻**当前订阅切换器**：任意页面一键展开全部订阅（名称 + 节点数 + 当前标记），单击即换
